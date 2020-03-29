@@ -72,3 +72,5 @@ class Algorithm:
         # Computes cluster measurements (for each cluster)yony.ceballos@udea.edu.coyony.ceballos@udea.edu.co
         for cluster in self.solution.clusters_list:
             cluster.get_measures(self.solution.instance.distances)
+
+
