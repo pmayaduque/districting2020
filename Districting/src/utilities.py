@@ -2,7 +2,20 @@ import os
 import gmplot
 from entities import Instance, Node, Solution
 from random import seed, randint, random, shuffle
+import pandas as pd
 
+
+def read_instance_csv(filename, filepath =os.path.dirname(os.getcwd()) + "/data/"):
+    # Creates instance object
+    instance = Instance()
+    df = pd.read_csv(filepath + filename)
+    for row in range(len(df.index)):
+        node = Node(int(df.loc[row, "id"]),
+                    df.loc[row, "latitude"],
+                    df.loc[row, "longitude"],
+                    df.loc[row, "demand"])
+        instance.nodes.append(node)
+    return instance
 
 
 def read_instance(filename, filepath =os.path.dirname(os.getcwd()) + "/data/"):
