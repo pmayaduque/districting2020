@@ -6,8 +6,20 @@ import pandas as pd
 
 
 def read_instance_csv(filename, filepath =os.path.dirname(os.getcwd()) + "/data/"):
+    """
+    Read the data of the instances
+
+    See the template doc file to understand the structure of the file
+
+    Parameters:
+        filename (str): name of the file to read including extension
+        filepath (str, optional): path to the directory
+            default is "data" folder in project env
+    """
+
     # Creates instance object
     instance = Instance()
+    # Read data into Dataframe
     df = pd.read_csv(filepath + filename)
     for row in range(len(df.index)):
         node = Node(int(df.loc[row, "id"]),

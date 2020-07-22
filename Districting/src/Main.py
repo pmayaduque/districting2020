@@ -11,7 +11,8 @@ if __name__ == "__main__":
     r.set_seed(22)
 
     # Read Instance
-    instance = utilities.read_instance("instance_small.txt")
+    instance = utilities.read_instance_csv("data_large.csv")
+    #instance = utilities.read_instance("instance_small.txt")
     print("Instance has been read")
 
     # Compute distances
