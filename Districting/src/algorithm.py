@@ -33,42 +33,23 @@ class Algorithm:
         # Creates a deep copy of list of nodes
         nodes_copy = copy.deepcopy(self.solution.instance.nodes)
         # order the copied list randomly
-        #r.shuffle_list(nodes_copy)
+        r.shuffle_list(nodes_copy)
 
         # Create clusters assigned the first n_cluster as centers
         for i in range(self.n_cluster):
-            dmax = 0
-            for j in range(len(nodes_copy)):
-                dnode = nodes_copy[j].demand
-                if dmax < dnode:
-                    dmax=dnode
-                    centro=j
-            node = nodes_copy.pop(centro)    #Lo elimina
+            node = nodes_copy.pop(0)
             cluster = Cluster(node)
             self.solution.clusters_list.append(cluster)
 
-        while len(nodes_copy)>0:
-            for cluster in self.solution.clusters_list:
-                node_remove_id = -99
-                if len(nodes_copy)>0:
-                    dmin=1000000000
-                    contador = 0
-                    for node in nodes_copy:
-                        center_id = cluster.center.id
-                        node_id = node.id
-                        distancia = self.solution.instance.distances[(center_id, node_id)]
-                        if distancia<dmin:
-                            dmin=distancia
-                            node_remove_id = contador
-                        contador += 1
-                    cluster.node_list.append(nodes_copy.pop(node_remove_id))
+        # Assigns the remaining nodes to the clusters
+        count = 0
+        while len(nodes_copy) > 0:
+            node = nodes_copy.pop(0)
+            id_cluster = count % self.n_cluster
+            self.solution.clusters_list[id_cluster].node_list.append(node)
+            count += 1
 
-
-        for cluster in self.solution.clusters_list:
-             print("Cluster")
-             for node in cluster.node_list:
-                 print(node.id)
-
-        # Computes cluster measurements (for each cluster)yony.ceballos@udea.edu.coyony.ceballos@udea.edu.co
+        # Computes cluster measurements
         for cluster in self.solution.clusters_list:
             cluster.get_measures(self.solution.instance.distances)
+
