@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from geopy.distance import distance, geodesic, great_circle
-import utilities
+
 
 
 class Instance:
