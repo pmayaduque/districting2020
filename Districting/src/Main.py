@@ -11,7 +11,7 @@ if __name__ == "__main__":
     r.set_seed(22)
 
     # Read Instance
-    instance = utilities.read_instance_csv("data_small.csv")
+    df, instance = utilities.read_instance_csv("data_small.csv")
     #instance = utilities.read_instance("instance_small.txt") # Deprecated
     print("Instance has been read")
 

@@ -27,7 +27,7 @@ def read_instance_csv(filename, filepath =os.path.dirname(os.getcwd()) + "/data/
                     df.loc[row, "longitude"],
                     df.loc[row, "demand"])
         instance.nodes.append(node)
-    return instance
+    return df, instance
 
 
 def read_instance(filename, filepath =os.path.dirname(os.getcwd()) + "/data/"):
@@ -147,7 +147,7 @@ class MapVisualiser:
         """
         self.gmap_key = key
 
-    def draw_cluster(self, solution, filepath =os.path.dirname(os.getcwd()) + "/maps/map.html"):
+    def draw_cluster(self, solution, filepath = os.path.dirname(os.getcwd()) + "/maps/map.html"):
         """
             Method to display cluster on the map
 
