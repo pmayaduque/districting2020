@@ -1,6 +1,6 @@
 import copy
-from entities import Cluster
-from utilities import RandGenerator
+from src.entities import Cluster
+from src.utilities import RandGenerator
 
 
 class Algorithm:
