@@ -1,6 +1,6 @@
 import os
 import gmplot
-from src.entities import Instance, Node, Solution
+from entities import Instance, Node, Solution
 from random import seed, randint, random, shuffle
 import pandas as pd
 
