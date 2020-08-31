@@ -147,7 +147,7 @@ class MapVisualiser:
         """
         self.gmap_key = key
 
-    def draw_cluster(self, solution):
+    def draw_cluster(self, solution, filepath =os.path.dirname(os.getcwd()) + "/maps/map.html"):
         """
             Method to display cluster on the map
 
@@ -174,7 +174,7 @@ class MapVisualiser:
             gmap3.scatter(latitude_list, longitude_list, colors[color_id], size=90, marker=False)
             count_colors += 1
 
-        gmap3.draw(os.path.dirname(os.getcwd()) + "/maps/map.html")
+        gmap3.draw(filepath)
 
 # Pallet of colours
 colors =["#6495ED",
